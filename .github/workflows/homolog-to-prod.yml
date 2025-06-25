@@ -1,0 +1,24 @@
+name: Deploy Homologação para Produção
+
+on:
+  push:
+    branches:
+      - homolog
+
+jobs:
+  merge-to-prod:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Configurar usuário Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Merge homolog -> prod
+        run: |
+          git checkout prod
+          git merge --no-ff homolog -m "Merge automático da homolog para prod via GitHub Actions"
+          git push origin prod
