@@ -1,0 +1,9 @@
+:root {
+  --primary-color: #8b1e1e;
+  --color-secondary: #d4af37;
+  --color-accent: #f4e1b0;
+  --color-bg: #3a1f0f;
+  --color-fg: #1a1a1a;
+}
+/* exemplo de uso para chamar uma variavel */
+/* .body{background-color: (var(--primary-color));} */
