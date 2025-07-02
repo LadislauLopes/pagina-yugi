@@ -2,8 +2,43 @@
   --primary-color: #8b1e1e;
   --color-secondary: #d4af37;
   --color-accent: #f4e1b0;
-  --color-bg: #3a1f0f;
+  --color-bg: #272228;
   --color-fg: #1a1a1a;
+  --white: #fff;
 }
 /* exemplo de uso para chamar uma variavel */
 /* .body{background-color: (var(--primary-color));} */
+body {
+  background-color: var(--color-bg);
+}
+.navbar {
+  display: flex;
+  background-color: var(--primary-color);
+  height: 8vh;
+  justify-content: space-between;
+}
+
+.logo {
+  display: inline-block;
+  height: 6vh;
+  width: 6vh;
+  margin-left: 24px;
+  padding-top: 8px;
+  align-items: center;
+}
+
+.navbar-list {
+  display: flex;
+  color: var(--white);
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+}
+
+.navbar-list a {
+  padding-block: 32px;
+  font-size: 18px;
+  color: var(--white);
+  text-decoration: none;
+  margin-right: 32px;
+}
