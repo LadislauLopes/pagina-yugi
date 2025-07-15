@@ -6,15 +6,15 @@ let lista_imagens = [
   "tenpai.svg",
   "salamangreat.svg",
 ]
-let imagem_baner = document.getElementById("img_banner").src
+let imagem_baner = document.getElementById("img_banner")
 
 function trocar_imagem() {
   for (let img in lista_imagens) {
     setTimeout(() => {
-      imagem_baner = `images/svg/${lista_imagens[img]}`
-      console.log(imagem_baner)
-    }, img*1000)
-
+      imagem_baner.setAttribute( 'src',`images/svg/${lista_imagens[img]}`)
+    }, img*4000)
   }
+  
 }
+
 trocar_imagem()
