@@ -1,20 +1,20 @@
-let lista_imagens = [
+const imagem_baner = document.getElementById("img_banner")
+
+const lista_imagens = [
   "exodia.svg",
   "fiendsmith.svg",
   "maliss.svg",
   "melodious.svg",
   "tenpai.svg",
-  "salamangreat.svg",
-]
-let imagem_baner = document.getElementById("img_banner")
-
-function trocar_imagem() {
-  for (let img in lista_imagens) {
-    setTimeout(() => {
-      imagem_baner.setAttribute( 'src',`images/svg/${lista_imagens[img]}`)
-    }, img*4000)
+  "salamangreat.svg",]
+let positon = 1 
+const nextImage = () => {
+  imagem_baner.setAttribute("src", `images/svg/${lista_imagens[positon]}`)
+  if (positon===5){
+    positon=0
+  }else{
+    positon+=1
   }
-  
 }
 
-trocar_imagem()
+setInterval(nextImage,4000)
