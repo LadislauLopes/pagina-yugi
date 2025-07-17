@@ -72,7 +72,6 @@ section {
   background-color: var(--color-banner);
   text-align: center;
   display: flex;
-
 }
 
 .title {
@@ -103,6 +102,3 @@ section {
   height: 100%;
   mask-image: linear-gradient(to bottom left, #000 10%, #0000);
 }
-
-
-

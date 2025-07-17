@@ -1,10 +1,9 @@
 footer{
   display: flex;
-  background:linear-gradient(to top, #000 60%, #fff 40%);
-
+  background:linear-gradient(to top, #000 60%, #fff0 40%);
   bottom: 0;
   left: 0;
-  height: 20vh;
+  height: 20%;
   position: fixed;
   width: 100%;
 }
@@ -18,5 +17,5 @@ footer{
 .espaco{
   height: 40%;
   width: 100%;
-  background-color: #fff;
+  background-color: #fff0;
 }
