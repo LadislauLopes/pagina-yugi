@@ -9,7 +9,7 @@ const lista_imagens = [
   "salamangreat.svg",]
 let positon = 1 
 const nextImage = () => {
-  imagem_baner.setAttribute("src", `images/svg/${lista_imagens[positon]}`)
+  imagem_baner.setAttribute("src", `images/svg/decks/${lista_imagens[positon]}`)
   if (positon===5){
     positon=0
   }else{
