@@ -3,8 +3,8 @@ footer{
   background:linear-gradient(to top, #000 60%, #fff0 40%);
   bottom: 0;
   left: 0;
-  height: 20%;
-  position: fixed;
+  height: 20vh;
+  /* position: fixed; */
   width: 100%;
 }
 .footer{
@@ -18,4 +18,22 @@ footer{
   height: 40%;
   width: 100%;
   background-color: #fff0;
+}
+
+.infos{
+  margin-top: 2vh;
+  margin-left: 40px;
+  color: white;
+}
+
+.social_media{
+  margin-top: 2vh;
+  margin-left: 40px;
+  display: flex;
+  color: white;
+  gap: 8px;
+}
+
+.icon{
+  height: 20px;
 }
