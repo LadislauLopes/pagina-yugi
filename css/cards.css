@@ -166,8 +166,7 @@ h2 {
   }
 }
 
-
-.title_cards{
+.title_cards {
   margin-top: 30px;
   text-align: center;
   justify-content: center;
@@ -177,22 +176,23 @@ h2 {
   gap: 16rem;
 }
 
-.colocacao{
+.colocacao {
   font-size: larger;
   font-weight: 800;
 }
 
-.nome_deck{
+.nome_deck {
   margin-top: 16px;
   font-size: 20px;
 }
 
-.ultima_liga_title{
+.ultima_liga_title {
   font-size: 24px;
 }
-.title_top_decks{
+.title_top_decks {
   margin-top: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+

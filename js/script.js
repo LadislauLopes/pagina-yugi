@@ -14,10 +14,10 @@ const nextImageBanner = () => {
     "src",
     `images/svg/decks/${lista_imagens[positon_banner]}`
   )
-  if (positon === 5) {
-    positon = 0
+  if (positon_banner === 5) {
+    positon_banner = 0
   } else {
-    positon += 1
+    positon_banner += 1
   }
 }
 
@@ -25,9 +25,9 @@ let positon_cards = 1
 const nextImagecards = (caminho) => {
   imagem_baner.setAttribute("src", `${caminho}img${[positon_cards]}`)
   if (positon === 4) {
-    positon = 1
+    positon_cards = 1
   } else {
-    positon += 1
+    positon_cards += 1
   }
 }
 
