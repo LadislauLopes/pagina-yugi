@@ -6,15 +6,29 @@ const lista_imagens = [
   "maliss.svg",
   "melodious.svg",
   "tenpai.svg",
-  "salamangreat.svg",]
-let positon = 1 
-const nextImage = () => {
-  imagem_baner.setAttribute("src", `images/svg/decks/${lista_imagens[positon]}`)
-  if (positon===5){
-    positon=0
-  }else{
-    positon+=1
+  "salamangreat.svg",
+]
+let positon_banner = 1
+const nextImageBanner = () => {
+  imagem_baner.setAttribute(
+    "src",
+    `images/svg/decks/${lista_imagens[positon_banner]}`
+  )
+  if (positon === 5) {
+    positon = 0
+  } else {
+    positon += 1
   }
 }
 
-setInterval(nextImage,4000)
+let positon_cards = 1
+const nextImagecards = (caminho) => {
+  imagem_baner.setAttribute("src", `${caminho}img${[positon_cards]}`)
+  if (positon === 4) {
+    positon = 1
+  } else {
+    positon += 1
+  }
+}
+
+setInterval(nextImageBanner, 4000)
