@@ -71,7 +71,12 @@ section {
 #inicio {
   width: 100%;
   height: 70vh;
-  background: linear-gradient(to bottom left, var(--color-accent),#1a1a1ac0,var(--color-banner)90%);
+  background: linear-gradient(
+    to bottom left,
+    var(--color-accent),
+    #1a1a1ac0,
+    var(--color-banner) 90%
+  );
 
   text-align: center;
   display: flex;
