@@ -1,0 +1,40 @@
+footer {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  background: #000;
+  bottom: 0;
+  left: 0;
+  height: 15vh;
+  /* position: fixed; */
+  width: 100%;
+  z-index: -1;
+}
+
+.infos {
+  margin-top: 2vh;
+  margin-left: 40px;
+  color: white;
+}
+
+.social_media {
+  margin-top: 2vh;
+  margin-left: 40px;
+  display: flex;
+  color: white;
+  gap: 8px;
+}
+
+.icon {
+  height: 20px;
+}
+
+.img_yugi {
+  height: 25vh;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 8rem;
+  z-index: 3;
+  ;
+}

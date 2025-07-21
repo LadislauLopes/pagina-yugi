@@ -1,0 +1,89 @@
+.secao {
+  height: 50vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 5rem;
+  animation: appear ease-in-out;
+  animation-timeline: view();
+  animation-range: cover 0% cover 25%;
+}
+
+.card_sobre { display: flex; gap: 30px;
+  background: #cccccc00;
+  display: flex;
+  margin: 0 auto;
+  height: 100%;
+  width: 50%;
+  border-radius: 5rem;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+.right {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+
+.title_card {
+  margin-top: 1rem;
+  font-size: 4rem;
+  align-self: center;
+  color: #212c81; 
+  font-family: 'Belwe-Bold', Georgia, serif;
+
+}
+.separator {
+  margin: 24px;
+  width: 80%;
+  border: 1px solid #36333380;
+}
+.text_card {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  color: #616060;
+}
+
+.img_card {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  transition: transform 0.6s ease;
+  border-radius: 50%;
+}
+.img_right {
+  border-top-right-radius: 5rem;
+  border-bottom-right-radius: 5rem;
+}
+.img_left {
+  border-top-left-radius: 5rem;
+  border-bottom-left-radius: 5rem;
+}
+.img_card:hover {
+  transform: scale(1.01);
+}
+@keyframes appear {
+  from {
+    opacity: 0;
+    scale: 0 0;
+  }
+  to {
+    opacity: 1;
+    scale: 1 1;
+  }
+}
+
+.link_loja{
+  text-decoration: none;
+  color: rgb(213, 115, 45);
+  font-weight: 600;
+}

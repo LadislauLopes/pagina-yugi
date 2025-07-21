@@ -1,0 +1,16 @@
+.botao_whats{
+  height: 6rem;
+  width: 6rem;
+  background-image: url('../images/svg/icon/whatsapp.svg');
+  position: fixed;
+  right: 1%;
+  top: 85%;
+  z-index: 100;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.botao_whats a{
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}
