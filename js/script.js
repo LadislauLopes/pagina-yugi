@@ -4,6 +4,7 @@ const imagem_card_2 = document.getElementById("o_que_e_yugi")
 const lista_imagens = [
   "exodia.svg",
   "blue-eyes.svg",
+  "yummy.svg",
   "fiendsmith.svg",
   "maliss.svg",
   "melodious.svg",
@@ -41,3 +42,5 @@ const nextImagecards = (caminho) => {
 setInterval(nextImageBanner, 3000)
 // setInterval(nextImagecards, 6000)
 
+const imagens = import.meta.glob("/images/svg/decks/*.svg")
+console.log(imagens)
