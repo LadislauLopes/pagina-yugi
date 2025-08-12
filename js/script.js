@@ -42,5 +42,3 @@ const nextImagecards = (caminho) => {
 setInterval(nextImageBanner, 3000)
 // setInterval(nextImagecards, 6000)
 
-const imagens = import.meta.glob("/images/svg/decks/*.svg")
-console.log(imagens)
