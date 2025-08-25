@@ -1,0 +1,84 @@
+/* Estilo para a tabela de ranking, seguindo a paleta do site */
+.ranking-section {
+  max-width: 700px;
+  margin: 40px auto 32px auto;
+  background: #ffffff00;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px 0 #0006;
+  padding: 32px 24px 24px 24px;
+  color: #fff;
+  font-family: "Montserrat", Arial, sans-serif;
+  border: none;
+  position: relative;
+  z-index: 2;
+}
+.ranking-section h2 {
+  text-align: center;
+  font-size: 2.1rem;
+  margin-bottom: 18px;
+  color: #ffd700;
+  letter-spacing: 1px;
+  font-family: "Montserrat", Arial, sans-serif;
+  text-shadow: 0 2px 8px #000a;
+}
+.ranking-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: transparent;
+}
+.ranking-table th,
+.ranking-table td {
+  padding: 12px 8px;
+  text-align: center;
+  border: none;
+}
+.ranking-table th {
+  background: #23284a;
+  color: #ffd700;
+  font-size: 1.1rem;
+  border-bottom: 2px solid #ffd70088;
+  font-family: "Montserrat", Arial, sans-serif;
+}
+.ranking-table tr {
+  transition: background 0.2s;
+  border-radius: 8px;
+}
+.ranking-table tr:nth-child(even) {
+  background: #23284a44;
+}
+.ranking-table tr:hover {
+  background: #ffd70022;
+  cursor: pointer;
+}
+.ranking-table .rank {
+  font-weight: bold;
+  color: #ffd700;
+  font-size: 1.1em;
+  font-family: "Montserrat", Arial, sans-serif;
+}
+.ranking-table .name {
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  font-family: "Montserrat", Arial, sans-serif;
+}
+.ranking-table .points {
+  font-family: "Roboto Mono", monospace;
+  color: #fff;
+  font-size: 1.05em;
+}
+.ranking-table .medal {
+  font-size: 1.3em;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+@media (max-width: 700px) {
+  .ranking-section {
+    padding: 12px 2px 8px 2px;
+    max-width: 99vw;
+  }
+  .ranking-table th,
+  .ranking-table td {
+    padding: 7px 1px;
+    font-size: 0.93em;
+  }
+}

@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="css/sobre.css" />
     <link rel="stylesheet" href="css/botao_whatsapp.css" />
 
+  <!-- Ranking Table CSS -->
+  <link rel="stylesheet" href="css/ranking.css" />
+
+  <!-- Ranking Table CSS -->
+  <link rel="stylesheet" href="css/ranking.css" />
+
     <title>Liga Yu-Gi-Oh Acre</title>
   </head>
   <body>
@@ -88,7 +94,7 @@
           <div class="left">
             <img
               class="img_card img_left" 
-              src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4noODzGdQvoyniclx_g6cBRAF-FEBhjSIWIHyJdx55FSWFtWLkiXOURfRErkbmdVbCHagi8WALIwGkdvqEMj1tL-6IqNmbClhaXzb3Qxy0nvQcKauEIT1HjI0niU30VLkCzvL9IJ7oPxdtww=s1030"
+              src="images/png/enerd/unnamed.png"
               alt=""
             />
           </div>
@@ -104,6 +110,27 @@
         </div>
       </div>
     </section>
+
+    <!-- Ranking Section -->
+    <section class="ranking-section">
+      <h2>Ranking da Liga</h2>
+      <div style="overflow-x:auto;">
+        <table class="ranking-table">
+          <thead>
+            <tr>
+              <th>Posição</th>
+              <th>Nome</th>
+              <th>Pontos</th>
+            </tr>
+          </thead>
+          <tbody id="ranking-body">
+            <!-- Conteúdo gerado pelo data.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+
 
     <footer>
       <div class="bronzeBorder"></div>
@@ -129,4 +156,6 @@
     </footer>
   </body>
   <script src="js/script.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/data.js"></script>
 </html>
