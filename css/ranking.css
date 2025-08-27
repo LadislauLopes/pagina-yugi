@@ -4,7 +4,7 @@
   margin: 40px auto 32px auto;
   background: #ffffff00;
   border-radius: 18px;
-  box-shadow: 0 4px 24px 0 #0006;
+  /* box-shadow: 0 4px 24px 0 #0006; */
   padding: 32px 24px 24px 24px;
   color: #fff;
   font-family: "Montserrat", Arial, sans-serif;
@@ -81,4 +81,38 @@
     padding: 7px 1px;
     font-size: 0.93em;
   }
+}
+
+
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.tab-btn {
+  padding: 10px 20px;
+  margin: 0 4px;
+  border: none;
+  background: #23284a;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  cursor: pointer;
+  border-radius: 8px 8px 0 0;
+  transition: background 0.2s;
+}
+
+.tab-btn.active {
+  background: #ffd700;
+  color: #23284a;
+  font-weight: bold;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
 }
