@@ -23,8 +23,8 @@ A página foi criada para reunir duelistas do Acre, divulgar eventos, compartilh
 ## Como usar
 
 1. Clone ou baixe este repositório.
-2. Abra o arquivo `index.html` em seu navegador.
-3. Navegue pelas seções para conhecer a Liga e ver as fotos dos eventos.
+2. Abra o arquivo `index.html` em seu navegador preferido.
+3. Navegue pelas seções para conhecer a Liga, ver fotos dos eventos e acessar os links das redes sociais.
 
 ## Estrutura de Pastas
 
@@ -32,11 +32,22 @@ A página foi criada para reunir duelistas do Acre, divulgar eventos, compartilh
 index.html
 css/
   reset.css
-  styles.css
+  style.css
+  footer.css
+  cards.css
+  sobre.css
+  botao_whatsapp.css
 images/
+  png/
+  svg/
 js/
   script.js
+README.md
 ```
+
+## Responsividade
+
+O site foi desenvolvido para funcionar bem em computadores, tablets e celulares. Todas as seções, cards, banners, rodapé e botões se adaptam automaticamente ao tamanho da tela.
 
 ## Créditos
 
@@ -44,5 +55,3 @@ js/
 - Layout e código: desenvolvido para a Liga Yu-Gi-Oh! Acreana
 
 ---
-
-Dúvidas ou sugestões? Entre em contato pelo e-mail exibido no rodapé da página!

@@ -6,7 +6,7 @@
   border-radius: 18px;
   /* box-shadow: 0 4px 24px 0 #0006; */
   padding: 32px 24px 24px 24px;
-  color: #fff;
+  color: #1E2A3A;
   font-family: "Montserrat", Arial, sans-serif;
   border: none;
   position: relative;
@@ -52,7 +52,7 @@
 }
 .ranking-table .rank {
   font-weight: bold;
-  color: #ffd700;
+  color: #352d00;
   font-size: 1.1em;
   font-family: "Montserrat", Arial, sans-serif;
 }
@@ -63,7 +63,7 @@
 }
 .ranking-table .points {
   font-family: "Roboto Mono", monospace;
-  color: #fff;
+  color: #161d72;
   font-size: 1.05em;
 }
 .ranking-table .medal {
