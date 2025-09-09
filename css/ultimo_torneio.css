@@ -64,7 +64,7 @@
 }
 
 
-/* .card_top:hover {
+ .card_top:hover {
   color: rgb(88 199 250 / 100%);
   transition: color 1s;
 }
@@ -107,7 +107,7 @@
     opacity: 1;
   transition: opacity .5s;
   animation: spin 2.5s linear infinite;
-} */
+} 
 
 @keyframes spin {
   0% {
@@ -146,7 +146,7 @@
   background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQftLqxQKmwiBuYA9vEoiqoTmq9QSwmUGhmzg&s)
 }
 
-.alo{
+.colocao h3{
   margin-bottom: 10px;
   font-weight: 900;
 }
