@@ -118,14 +118,6 @@
   }
 }
 
-a {
-  color: #ffffff;
-  text-decoration: none;
-  font-family: sans-serif;
-  font-weight: bold;
-  margin-top: 2rem;
-}
-
 .card_top p {
   position: absolute; /* permite usar bottom */
   bottom: 10px; /* distancia da base do card */
