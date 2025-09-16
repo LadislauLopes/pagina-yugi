@@ -1,8 +1,9 @@
 .div_ultimo_torneio {
   display: flex;
-  gap: 10%;
+  gap: 40px; /* espaço fixo entre colunas */
   flex-wrap: nowrap; /* padrão: não quebra linha em desktop */
   justify-content: center;
+  align-items: flex-start; /* todos começam do mesmo topo */
 }
 
 /* Mobile: telas até 768px */
@@ -26,36 +27,45 @@
 .colocao {
   display: flex;
   flex-direction: column;
+  align-items: center;
   font-size: larger;
   color: #212c81;
-  gap: 4%;
+  gap: 10px;
+  width: var(--card-width); /* cada coluna ocupa mesmo espaço */
+  text-align: center;
+}
+
+.colocao h3 {
+  margin: 0 0 10px 0;
+  font-weight: 900;
+  min-height: 25px; /* garante altura fixa p/ alinhamento */
 }
 
 .colocao h1 {
-  margin: 10% 0;
+  margin: 0;
+  min-height: 40px; /* altura mínima p/ manter alinhado */
+  font-size: 1rem;
 }
 
 .card_top {
   background-image: url("../images/png/enerd/unknown.png");
-  background-size: cover; /* mantém a imagem cobrindo todo o card */
-  background-position: center; /* centraliza a imagem */
-  background-repeat: no-repeat; /* evita repetição da imagem */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   width: var(--card-width);
   height: var(--card-height);
   padding: 3px;
   position: relative;
   border-radius: 6px;
+  display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  display: flex;
   font-size: 1.5em;
   color: rgb(255 255 255 / 100%);
   cursor: pointer;
   font-family: cursive;
-  text-shadow: 2px 2px 0 #000, /* sombra direita/baixo */ -2px 2px 0 #000,
-    /* sombra esquerda/baixo */ 2px -2px 0 #000,
-    /* sombra direita/cima */ -2px -2px 0 #000; /* sombra esquerda/cima */
+  text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000,
+    -1px -1px 0 #000;
 }
 
 .card_top:hover {
@@ -119,15 +129,10 @@
 }
 
 .card_top p {
-  position: absolute; /* permite usar bottom */
-  bottom: 10px; /* distancia da base do card */
-  left: 50%; /* opcional: centraliza horizontalmente */
-  transform: translateX(-50%); /* centraliza de fato */
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
   margin: 0;
   font-size: large;
-}
-
-.colocao h3 {
-  margin-bottom: 10px;
-  font-weight: 900;
 }
