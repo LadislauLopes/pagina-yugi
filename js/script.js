@@ -1,6 +1,4 @@
 const imagem_baner = document.getElementById("img_banner")
-const imagem_card_1 = document.getElementById("imagem_quem_somos")
-const imagem_card_2 = document.getElementById("o_que_e_yugi")
 const lista_imagens = [
   "exodia.svg",
   "blue-eyes.svg",
@@ -17,16 +15,28 @@ let positon_banner = 1
 const quantidade_na_lista = lista_imagens.length - 1
 
 const nextImageBanner = () => {
-  imagem_baner.setAttribute(
-    "src",
-    `images/svg/decks/${lista_imagens[positon_banner]}`
-  )
-  console.log(quantidade_na_lista)
-  if (positon_banner === quantidade_na_lista) {
-    positon_banner = 0
-  } else {
-    positon_banner += 1
-  }
+
+  imagem_baner.classList.remove("visible")
+  imagem_baner.classList.add("fade")
+
+
+  setTimeout(() => {
+    imagem_baner.setAttribute(
+      "src",
+      `images/svg/decks/${lista_imagens[positon_banner]}`
+    )
+
+
+    if (positon_banner === quantidade_na_lista) {
+      positon_banner = 0
+    } else {
+      positon_banner += 1
+    }
+
+
+    imagem_baner.classList.remove("fade")
+    imagem_baner.classList.add("visible")
+  }, 300) 
 }
 
 let positon_cards = 1
@@ -41,4 +51,3 @@ const nextImagecards = (caminho) => {
 }
 setInterval(nextImageBanner, 3000)
 // setInterval(nextImagecards, 6000)
-
