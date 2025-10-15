@@ -25,7 +25,8 @@
   flex-wrap: wrap;
 }
 
-.left, .right {
+.left,
+.right {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -40,7 +41,7 @@
   font-size: 3rem;
   align-self: center;
   color: #212c81;
-  font-family: 'Belwe-Bold', Georgia, serif;
+  font-family: "Belwe-Bold", Georgia, serif;
 }
 
 .separator {
@@ -100,7 +101,8 @@
     max-width: 300px;
   }
 
-  .img_right, .img_left {
+  .img_right,
+  .img_left {
     border-radius: 2rem;
   }
 }
@@ -113,5 +115,23 @@
   to {
     opacity: 1;
     scale: 1 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .card_sobre {
+    flex-direction: column-reverse;
+    border-radius: 2rem;
+    gap: 2rem;
+  }
+  .title_card {
+    font-size: 2.5rem;
+  }
+  .img_card {
+    max-width: 300px;
+  }
+  .img_right,
+  .img_left {
+    border-radius: 2rem;
   }
 }

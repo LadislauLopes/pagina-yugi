@@ -136,3 +136,10 @@
   margin: 0;
   font-size: large;
 }
+
+/* Mobile: telas at9 768px */
+@media (max-width: 768px) {
+  .div_ultimo_torneio {
+    flex-wrap: wrap; /* permite quebrar linha apenas em mobile */
+  }
+}

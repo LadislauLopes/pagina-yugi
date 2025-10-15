@@ -9,6 +9,7 @@ function carregarCSV(url, tabelaId) {
   fetch(url)
     .then((res) => res.text())
     .then((csv) => {
+      console.log("CSV bruto carregado:", csv)
       const resultados = Papa.parse(csv, {
         header: true,
         skipEmptyLines: true,
@@ -30,6 +31,8 @@ function carregarCSV(url, tabelaId) {
       // Remove jogadores com 0 pontos
       const dadosFiltrados = dados.filter((jogador) => jogador.Pontuação > 0)
 
+      console.log("Dados convertidos e filtrados:", dadosFiltrados)
+
       // Ordena por Pontuação e Desempate
       dadosFiltrados.sort((a, b) => {
         if (b.Pontuação === a.Pontuação) return b.Desempate - a.Desempate
@@ -40,7 +43,6 @@ function carregarCSV(url, tabelaId) {
     })
     .catch((err) => console.error("Erro ao carregar CSV:", err))
 }
-
 
 // Função para renderizar tabela com posição correta e medalhas
 function renderTabela(data, tabelaId) {

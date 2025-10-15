@@ -262,3 +262,85 @@ section {
     top: unset;
   }
 }
+
+/* Responsividade geral para tablets e celulares (restaurado do snapshot) */
+@media (max-width: 1024px) {
+  .primeira_div_banner,
+  .segunda_div_banner {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #img_banner {
+    width: 80%;
+    height: auto;
+  }
+
+  .btn {
+    max-width: 80%;
+    font-size: 16px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .navbar-list {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .logo {
+    margin: 0 auto;
+  }
+
+  .card_sobre {
+    flex-direction: column;
+    width: 90%;
+    border-radius: 2rem;
+    padding: 1rem;
+  }
+
+  .img_card {
+    border-radius: 2rem !important;
+  }
+
+  .title_card {
+    font-size: 2rem;
+  }
+
+  .text_card {
+    font-size: 16px;
+  }
+
+  .img_yugi {
+    display: none; /* Oculta no mobile para evitar sobreposi */
+  }
+
+  footer {
+    height: auto;
+    padding: 1rem;
+  }
+
+  .social_media {
+    margin-left: 0;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .infos {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .botao_whats {
+    height: 4rem;
+    width: 4rem;
+    bottom: 2rem;
+    right: 1rem;
+    top: unset;
+  }
+}

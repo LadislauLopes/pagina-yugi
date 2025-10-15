@@ -196,3 +196,30 @@ h2 {
   justify-content: center;
 }
 
+@media (max-width: 768px) {
+  h2 {
+    font-size: 1.5rem;
+    top: 2em;
+  }
+  .container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .card {
+    max-width: 90%;
+    height: 300px;
+  }
+}
+@media (max-width: 480px) {
+  .card {
+    height: 250px;
+  }
+  h2 {
+    font-size: 1.2rem;
+    padding: 0 1rem;
+  }
+  .blob {
+    width: 250px;
+    height: 250px;
+  }
+}
