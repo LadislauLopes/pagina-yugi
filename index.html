@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/botao_whatsapp.css" />
     <link rel="stylesheet" href="css/ultimo_torneio.css" />
   <link rel="stylesheet" href="css/ranking.css" />
+  <link rel="stylesheet" href="css/chats.css" />
 <link rel="icon" href="images/svg/logo.svg">
 
     <title>Liga Yu-Gi-Oh Acre</title>
@@ -143,46 +144,13 @@
   </div>
 </section>
 
-
-<!-- Ranking Section -->
-<section class="ranking-section">
-  <h2 class="title_dourado ">Ranking da Liga</h2>
-
-  <!-- Abas -->
-  <div class="tabs">
-    <button class="tab-btn active" data-target="ranking-atual">Ranking Mensal</button>
-    <button class="tab-btn" data-target="ranking-anual">Ranking Anual</button>
-  </div>
-
-  <!-- Conteúdo das abas -->
-  <div class="tab-content active" id="ranking-atual">
-    <table class="ranking-table">
-      <thead>
-        <tr>
-          <th>Posição</th>
-          <th>Nome</th>
-          <th>Pontos</th>
-        </tr>
-      </thead>
-      <tbody id="ranking-body-atual"></tbody>
-    </table>
-  </div>
-
-  <div class="tab-content" id="ranking-anual">
-    <table class="ranking-table">
-      <thead>
-        <tr>
-          <th>Posição</th>
-          <th>Nome</th>
-          <th>Pontos</th>
-        </tr>
-      </thead>
-      <tbody id="ranking-body-anual"></tbody>
-    </table>
+<!-- Gráfico de Pizza dos Decks -->
+<section class="grafico_torneio">
+  <h2 class="title_dourado">Distribuição de Decks</h2>
+  <div class="grafico_container">
+    <canvas id="pieChart"></canvas>
   </div>
 </section>
-
-
 
     <footer>
       <div class="bronzeBorder"></div>
@@ -208,7 +176,10 @@
     </footer>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="js/script.js"></script>
   <script src="js/data.js"></script>
   <script src="js/ultimo_torneio.js"></script>
+  <script src="js/chats.js"></script>
+  
 </html>

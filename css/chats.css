@@ -1,0 +1,18 @@
+.grafico_torneio {
+  text-align: center;
+  padding: 5rem 0;
+  width: 100%;
+}
+
+.grafico_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+canvas#pieChart {
+  max-width: 100%;
+  max-height: 600px;
+}
+
