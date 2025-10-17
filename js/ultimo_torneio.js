@@ -1,173 +1,83 @@
-// =========================
-// 1️⃣ Função para buscar CSV da planilha
-// =========================
-async function fetchSheetData(spreadsheetId, sheetName, range = null) {
-  const url = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(
-    sheetName
-  )}${range ? "&range=" + encodeURIComponent(range) : ""}`
+async function carregarUltimoTorneio() {
   try {
-    const response = await fetch(url)
-    if (!response.ok)
-      throw new Error(`Erro ao buscar a planilha: ${response.status}`)
-    return await response.text()
-  } catch (err) {
-    console.error(err)
-    return null
-  }
-}
+    const base =
+      "https://opensheet.elk.sh/1hyJl5s4XDxgrsbcQBxKzNA0rpQwA4DwGcomf5CxtKH8"
 
-// =========================
-// 2️⃣ Função para limpar valores
-// =========================
-function cleanValue(value) {
-  return (value || "")
-    .trim()
-    .replace(/^"+|"+$/g, "") // remove aspas
-    .replace(/\\+/g, "") // remove backslashes extras
-    .replace(/\s+$/g, "") // remove espaços finais
-}
+    // Busca todos os dados necessários
+    const [players, tournaments, decks, positions] = await Promise.all([
+      fetch(`${base}/Player`).then((r) => r.json()),
+      fetch(`${base}/Tournament`).then((r) => r.json()),
+      fetch(`${base}/Decks`).then((r) => r.json()),
+      fetch(`${base}/Tournament_Position`).then((r) => r.json()),
+    ])
 
-// =========================
-// 3️⃣ Função principal: buscar torneio mais recente + integrar decks
-// =========================
-async function fetchTorneioMaisRecente(
-  spreadsheetId,
-  rangeTorneios = "N1:AF22",
-  numTorneios = 5,
-  sheetDecks = "Decks",
-  rangeDecks = "B4:C100"
-) {
-  // Função para gerar nome da planilha do torneio
-  function getSheetTorneio(date) {
-    const meses = [
-      "Janeiro",
-      "Fevereiro",
-      "Março",
-      "Abril",
-      "Maio",
-      "Junho",
-      "Julho",
-      "Agosto",
-      "Setembro",
-      "Outubro",
-      "Novembro",
-      "Dezembro",
-    ]
-    return `Liga ${meses[date.getMonth()]} ${date.getFullYear()}`
-  }
+    if (!tournaments.length) return console.warn("Nenhum torneio encontrado")
 
-  // 1️⃣ Buscar decks
-  const csvDecks = await fetchSheetData(spreadsheetId, sheetDecks, rangeDecks)
-  const decks = {}
-  if (csvDecks) {
-    csvDecks.split("\n").forEach((row, i) => {
-      const [nomeDeckRaw, urlRaw] = row.split(",")
-      if (!nomeDeckRaw || !urlRaw) return
-      const nomeDeck = cleanValue(nomeDeckRaw).toLowerCase()
-      const urlImagem = cleanValue(urlRaw)
-      if (nomeDeck && urlImagem) decks[nomeDeck] = urlImagem
-    })
-  }
+    // Pega o torneio mais recente
+    const ultimoTorneio = tournaments
+      .map((t) => ({ ...t, DateObj: new Date(t.Date || t.Data) }))
+      .sort((a, b) => b.DateObj - a.DateObj)[0]
 
-  // 2️⃣ Buscar torneios
-  let date = new Date()
-  let sheetTorneios = getSheetTorneio(date)
-  let csvTorneios = await fetchSheetData(
-    spreadsheetId,
-    sheetTorneios,
-    rangeTorneios
-  )
+    // Filtra as posições do Top 4
+    const posicoes = positions
+      .filter((p) => p.Id_Tournament === ultimoTorneio.Id_Tournament)
+      .sort((a, b) => Number(a.Position) - Number(b.Position))
+      .slice(0, 4)
 
-  // Se vazio, tenta o mês anterior
-  if (!csvTorneios || csvTorneios.trim() === "") {
-    date.setMonth(date.getMonth() - 1)
-    sheetTorneios = getSheetTorneio(date)
-    csvTorneios = await fetchSheetData(
-      spreadsheetId,
-      sheetTorneios,
-      rangeTorneios
-    )
-  }
-
-  if (!csvTorneios || csvTorneios.trim() === "") return null
-
-  const rows = csvTorneios.split("\n").map((r) => r.split(","))
-  const torneios = []
-
-  for (let t = 0; t < numTorneios; t++) {
-    const startCol = t * 4
-    const nomeTorneio = cleanValue(rows[0][startCol])
-    const data = cleanValue(rows[1][startCol])
-    const participantes = []
-
-    const hasPoints = rows
-      .slice(2)
-      .some((row) => cleanValue(row[startCol + 3]) !== "")
-    if (!hasPoints) continue
-
-    for (let i = 2; i < rows.length; i++) {
-      const nomeParticipante = cleanValue(rows[i][startCol])
-      let deck = cleanValue(rows[i][startCol + 1])
-      const posicao = cleanValue(rows[i][startCol + 2])
-      const pontos = cleanValue(rows[i][startCol + 3])
-
-      if (nomeParticipante && pontos !== "") {
-        const deckKey = deck.toLowerCase().trim()
-        const urlDeck = decks[deckKey] || null
-
-        participantes.push({
-          nome: nomeParticipante,
-          deck,
-          posicao: Number(posicao),
-          pontos,
-          urlDeck,
-        })
+    // Cria array de participantes com nome limitado a duas palavras
+    const participantes = posicoes.map((p) => {
+      const player = players.find((pl) => pl.Id_Player === p.Id_Player)
+      const deck = decks.find((d) => d.Id_Decks === p.Deck)
+      return {
+        nome: player
+          ? `${player.FirstName} ${player.LastName}`
+              .split(" ")
+              .slice(0, 2)
+              .join(" ")
+          : "Desconhecido",
+        deck: deck ? deck.Nome : "Desconhecido",
+        urlDeck: deck && deck.url ? deck.url : "images/png/enerd/unknown.png", // fallback
       }
+    })
+
+    // Atualiza título do torneio com data e número de participantes
+    const title = document.querySelector(".title_dourado")
+    if (title) {
+      const dataObj = new Date(ultimoTorneio.Date || ultimoTorneio.Data)
+      const dataFormatada = dataObj.toLocaleDateString("pt-BR", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      })
+      title.textContent = `Resultado do Torneio em ${dataFormatada} - Top ${participantes.length}`
     }
 
-    participantes.sort((a, b) => a.posicao - b.posicao)
-
-    if (participantes.length > 0) {
-      torneios.push({ data, nome: nomeTorneio, participantes })
-    }
-  }
-
-  return torneios.length > 0 ? torneios[torneios.length - 1] : null
-}
-
-// =========================
-// 4️⃣ Uso da função e atualização do HTML
-// =========================
-;(async () => {
-  const spreadsheetId = "11eE0n9zHcdamJtO4q2s76imr4xLERTUZ-DMIa-9cvRA"
-  const torneioMaisRecente = await fetchTorneioMaisRecente(
-    spreadsheetId,
-    "N1:AF22",
-    5,
-    "Decks",
-    "B4:C100"
-  )
-
-  if (torneioMaisRecente && torneioMaisRecente.participantes) {
-    torneioMaisRecente.participantes.forEach((p, index) => {
+    // Atualiza cards do Top 4
+    participantes.forEach((p, index) => {
       const card = document.getElementById(`top_${index + 1}`)
       if (!card) return
 
+      // Atualiza o nome do deck dentro do card
       const pDeck = card.querySelector("p")
       if (pDeck) pDeck.textContent = p.deck
 
-      if (p.urlDeck) {
-        card.style.backgroundImage = `url(${p.urlDeck})`
-        card.style.backgroundSize = "cover"
-        card.style.backgroundPosition = "center"
-      } else {
-        console.warn(`[Aviso] URL não encontrada para: ${p.deck}`)
-      }
+      // Aplica imagem do deck como fundo
+      card.style.backgroundImage = `url(${p.urlDeck})`
+      card.style.backgroundSize = "cover"
+      card.style.backgroundPosition = "center"
 
+      // Atualiza o nome do jogador no <h1> ao lado de fora
       const h1Participante = card.nextElementSibling
       if (h1Participante && h1Participante.tagName === "H1") {
         h1Participante.textContent = p.nome
       }
     })
+
+    console.log("Top 4 carregado:", participantes)
+  } catch (err) {
+    console.error("Erro ao carregar dados do torneio:", err)
   }
-})()
+}
+
+// Chama a função
+carregarUltimoTorneio()

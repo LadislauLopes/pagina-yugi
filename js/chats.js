@@ -54,7 +54,9 @@ Promise.all(imagePromises).then(() => {
       color.className = "grafico_legenda_cor"
       color.style.background = s.color
       const text = document.createElement("span")
-      text.textContent = `${s.label} (${s.value})`
+      const total = slices.reduce((a, b) => a + b.value, 0)
+      const percent = ((s.value / total) * 100).toFixed(2) + "%"
+      text.textContent = `${s.label} (${percent})`
       item.appendChild(color)
       item.appendChild(text)
       legendEl.appendChild(item)
@@ -112,7 +114,7 @@ Promise.all(imagePromises).then(() => {
           const lineLength = outerRadius * 0.35
           const lineEndX = cx + (outerRadius + lineLength) * Math.cos(angleMid)
           const lineEndY = cy + (outerRadius + lineLength) * Math.sin(angleMid)
-          const percent = ((slice.value / total) * 100).toFixed(1) + "%"
+          const percent = ((slice.value / total) * 100).toFixed(2) + "%"
           ctx.beginPath()
           ctx.moveTo(lineStartX, lineStartY)
           ctx.lineTo(lineEndX, lineEndY)
