@@ -317,12 +317,12 @@ section {
   }
 
   .img_yugi {
-    display: none; /* Oculta no mobile para evitar sobreposi */
+    display: none; /* Oculta no mobile para evitar  */
   }
 
   footer {
     height: auto;
-    padding: 1rem;
+    padding: 0rem;
   }
 
   .social_media {
