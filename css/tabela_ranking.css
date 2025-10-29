@@ -12,7 +12,7 @@
   position: relative;
   z-index: 2;
 }
-.title_dourado {
+/* .title_dourado {
   text-align: center;
   font-size: 2.1rem;
   margin-bottom: 18px;
@@ -20,7 +20,7 @@
   letter-spacing: 1px;
   font-family: "Montserrat", Arial, sans-serif;
   text-shadow: 0 2px 8px #000a;
-}
+} */
 .ranking-table {
   width: 100%;
   border-collapse: collapse;
