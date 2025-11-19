@@ -12,6 +12,8 @@
         text-align: center;
         margin-bottom: 20px;
         font-size: 1.8rem;
+        -webkit-text-stroke: 0.8px black;
+        /* text-shadow: 0 2px 8px #000a; */
       }
 
       .ranking_container {
