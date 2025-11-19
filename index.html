@@ -20,7 +20,87 @@
   </head>
   <body>
 
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="#inicio" class="navbar-logo">
+          <img src="images/svg/logo.svg" alt="Logo Liga Yu-Gi-Oh Acre" />
+        </a>
+        <ul class="navbar-menu">
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#ultimo_torneio">Último Torneio</a></li>
+          <li><a href="#rankingTitulo">Ranking</a></li>
+          <li><a href="#" id="openModalBtn">Meu Perfil</a></li>
+        </ul>
+      </div>
+    </nav>
 
+    <!-- Modal Meu Perfil -->
+    <div id="perfilModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 class="modal-title">Meu Perfil</h2>
+        <div class="modal-body">
+          <!-- Busca por ID -->
+          <div class="busca-perfil">
+            <div class="input-group">
+              <label for="idJogador">Digite seu ID:</label>
+              <div class="busca-container">
+                <input type="text" id="idJogador" placeholder="Ex: 1, 2, 3...">
+                <button class="btn-buscar" id="btnBuscar">Buscar</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Loading -->
+          <div id="loadingPerfil" class="loading" style="display: none;">
+            <p>Carregando...</p>
+          </div>
+
+          <!-- Resultado do Perfil -->
+          <div id="resultadoPerfil" class="perfil-info" style="display: none;">
+            <div class="perfil-avatar">
+              <img src="images/svg/logo.svg" alt="Avatar" class="avatar-img" />
+            </div>
+            <div class="perfil-dados">
+              <div class="info-item">
+                <label>Nome:</label>
+                <span id="perfilNome">-</span>
+              </div>
+              <div class="info-item">
+                <label>Deck Mais Usado:</label>
+                <span id="perfilDeck">-</span>
+              </div>
+              <div class="info-item">
+                <label>Ganha Mais Contra:</label>
+                <span id="perfilGanhaMais">-</span>
+              </div>
+              <div class="info-item">
+                <label>Perde Mais Contra:</label>
+                <span id="perfilPerdeMais">-</span>
+              </div>
+              <div class="info-item">
+                <label>Win Rate Total:</label>
+                <span id="perfilWinrate">-</span>
+              </div>
+              <div class="info-item">
+                <label>Torneios Participados:</label>
+                <span id="perfilTorneios">-</span>
+              </div>
+              <div class="info-item">
+                <label>Win Rate Ponderado:</label>
+                <span id="perfilWinratePonderado">-</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mensagem de erro -->
+          <div id="erroPerfil" class="erro-perfil" style="display: none;">
+            <p>Jogador não encontrado. Verifique o ID e tente novamente.</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <section id="inicio">
       <div class="primeira_div_banner">
@@ -193,5 +273,6 @@
   <script src="js/ultimo_torneio.js"></script>
   <script src="js/chats.js"></script>
   <script src="js/busca_perfil.js"></script>
+  <script src="js/modal.js"></script>
   
 </html>
