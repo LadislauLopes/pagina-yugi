@@ -65,7 +65,10 @@ async function buscarPerfilJogador(playerId) {
     // Busca decks usados pelo jogador através de Tournament_Position
     positions.forEach((pos) => {
       if (normalizeId(pos.Id_Player) === playerIdNorm && pos.Deck) {
-        deckUsage[pos.Deck] = (deckUsage[pos.Deck] || 0) + 1
+        const deckIdPos = normalizeId(pos.Deck)
+        if (deckIdPos) {
+          deckUsage[deckIdPos] = (deckUsage[deckIdPos] || 0) + 1
+        }
       }
     })
 
@@ -123,6 +126,7 @@ async function buscarPerfilJogador(playerId) {
 
     // Deck mais usado
     let deckMaisUsado = "Nenhum"
+    let deckImagemUrl = "images/png/enerd/unknown.png"
     console.log("Deck usage:", deckUsage)
     console.log("Decks disponíveis:", decks)
 
@@ -132,10 +136,17 @@ async function buscarPerfilJogador(playerId) {
       )[0][0]
       console.log("Deck ID mais usado:", deckIdMaisUsado)
 
-      const deckObj = decks.find((d) => d.Id_Decks === deckIdMaisUsado)
+      const deckObj = decks.find(
+        (d) => normalizeId(d.Id_Decks) === deckIdMaisUsado
+      )
       console.log("Deck encontrado:", deckObj)
 
-      deckMaisUsado = deckObj ? deckObj.Nome : deckIdMaisUsado
+      if (deckObj) {
+        deckMaisUsado = deckObj.Nome || deckMaisUsado
+        deckImagemUrl = deckObj.url || deckImagemUrl
+      } else {
+        deckMaisUsado = deckIdMaisUsado
+      }
     }
 
     // Oponente que mais ganha
@@ -184,6 +195,7 @@ async function buscarPerfilJogador(playerId) {
     return {
       nome: nomeCompleto,
       deckMaisUsado,
+      deckImagemUrl,
       ganhaMaisDe,
       perdeMaisDe,
       winrate: `${winrate}%`,

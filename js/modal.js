@@ -96,6 +96,13 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("perfilWinratePonderado").textContent =
         perfil.winratePonderado
 
+      // Atualiza a imagem com o deck mais usado
+      const avatarImg = document.querySelector("#resultadoPerfil .avatar-img")
+      if (avatarImg && perfil.deckImagemUrl) {
+        avatarImg.src = perfil.deckImagemUrl
+        avatarImg.alt = `Deck mais usado: ${perfil.deckMaisUsado}`
+      }
+
       // Mostra resultado
       loadingDiv.style.display = "none"
       resultadoDiv.style.display = "block"
