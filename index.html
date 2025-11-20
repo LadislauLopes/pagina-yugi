@@ -20,12 +20,17 @@
   </head>
   <body>
 
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Menu principal">
       <div class="navbar-container">
-        <a href="#inicio" class="navbar-logo">
+        <a href="#inicio" class="navbar-logo" aria-label="Ir para início">
           <img src="images/svg/logo.svg" alt="Logo Liga Yu-Gi-Oh Acre" />
         </a>
-        <ul class="navbar-menu">
+        <button class="navbar-toggle" id="navbarToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navbarMenu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <ul class="navbar-menu" id="navbarMenu">
           <li><a href="#inicio">Início</a></li>
           <li><a href="#sobre">Sobre</a></li>
           <li><a href="#ultimo_torneio">Último Torneio</a></li>
@@ -274,5 +279,6 @@
   <script src="js/chats.js"></script>
   <script src="js/busca_perfil.js"></script>
   <script src="js/modal.js"></script>
+  <script src="js/navbar.js"></script>
   
 </html>

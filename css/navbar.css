@@ -83,39 +83,129 @@ html {
 /* Responsivo para dispositivos móveis */
 @media (max-width: 768px) {
   .navbar-container {
-    flex-direction: column;
-    padding: 1rem;
-    gap: 1rem;
+    flex-direction: row;
+    padding: 0.75rem 1.25rem;
   }
 
   .navbar-logo img {
-    height: 40px;
+    height: 42px;
   }
 
-  .navbar-menu {
-    flex-direction: row;
-    flex-wrap: wrap;
+  /* Botão hamburger */
+  .navbar-toggle {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    gap: 1rem;
+    gap: 5px;
+    background: transparent;
+    border: 2px solid #d4af37;
+    padding: 8px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .navbar-toggle:hover {
+    background: rgba(212, 175, 55, 0.12);
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+  }
+
+  .navbar-toggle .bar {
+    width: 26px;
+    height: 3px;
+    background: #d4af37;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+    border-radius: 2px;
+  }
+
+  /* Estado ativo (X) */
+  .navbar-toggle.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .navbar-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .navbar-toggle.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  /* Menu mobile inicialmente escondido */
+  .navbar-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    flex-direction: column;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-bottom: 3px solid #d4af37;
+    padding: 1rem 1.25rem 1.75rem;
+    gap: 0.75rem;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: max-height 0.5s ease, opacity 0.45s ease, transform 0.45s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  .navbar-menu.open {
+    max-height: 500px; /* suficiente para todos os links */
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .navbar-menu li a {
-    font-size: 0.9rem;
-    padding: 0.4rem 0.8rem;
+    font-size: 1rem;
+    padding: 0.6rem 0.85rem;
+    width: 100%;
+    display: block;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+  }
+  .navbar-menu li a:hover {
+    background: rgba(212, 175, 55, 0.18);
   }
 
+  /* Oculta menu padrão e mostra toggle */
+  .navbar-menu,
+  .navbar-toggle {
+    order: 3;
+  }
+
+  /* Ajusta padding-top do body para altura menor */
   body {
-    padding-top: 120px;
+    padding-top: 78px;
   }
 }
 
 @media (max-width: 480px) {
-  .navbar-menu {
-    gap: 0.5rem;
+  .navbar-toggle .bar {
+    width: 24px;
   }
-
   .navbar-menu li a {
-    font-size: 0.8rem;
-    padding: 0.3rem 0.6rem;
+    font-size: 0.9rem;
   }
+}
+
+/* Esconde toggle em telas grandes */
+@media (min-width: 769px) {
+  .navbar-toggle {
+    display: none;
+  }
+  .navbar-menu {
+    display: flex !important;
+    position: static;
+    max-height: none;
+    opacity: 1;
+    transform: none;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+  }
+}
+
+/* Evita scroll quando menu aberto */
+body.menu-open {
+  overflow: hidden;
 }
