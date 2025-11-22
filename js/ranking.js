@@ -111,7 +111,9 @@ async function carregarRankingAnual() {
         }
       }
 
-      if (winnerId) stats[winnerId] = stats[winnerId] || { partidas: 0, vitorias: 0 }, stats[winnerId].vitorias++
+      if (winnerId)
+        (stats[winnerId] = stats[winnerId] || { partidas: 0, vitorias: 0 }),
+          stats[winnerId].vitorias++
     })
 
     // Remove jogadores sem partidas
@@ -133,7 +135,15 @@ async function carregarRankingAnual() {
           : id
 
         const winrateNumeric = s.partidas ? s.vitorias / s.partidas : 0
-        const bayesNumeric = (s.vitorias + 5 * (Object.values(stats).reduce((a,b)=>a+(b.vitorias/b.partidas),0)/Object.values(stats).length)) / (s.partidas + 5)
+        const bayesNumeric =
+          (s.vitorias +
+            5 *
+              (Object.values(stats).reduce(
+                (a, b) => a + b.vitorias / b.partidas,
+                0
+              ) /
+                Object.values(stats).length)) /
+          (s.partidas + 5)
 
         return {
           id,
@@ -150,12 +160,11 @@ async function carregarRankingAnual() {
       .filter((r) => r.partidas > 0)
       .sort((a, b) => {
         if (b._bayesNum !== a._bayesNum) return b._bayesNum - a._bayesNum
-        if (b._vitoriasNum !== a._vitoriasNum) return b._vitoriasNum - a._vitoriasNum
+        if (b._vitoriasNum !== a._vitoriasNum)
+          return b._vitoriasNum - a._vitoriasNum
         return b._partidasNum - a._partidasNum
       })
       .slice(0, 3)
-
-    console.log("Top 3 ranking anual (robusto):", ranking)
 
     // ============================
     // === Atualiza DOM ===========

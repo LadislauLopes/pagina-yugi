@@ -101,17 +101,66 @@ document.addEventListener("DOMContentLoaded", function () {
       if (avatarImg && perfil.deckImagemUrl) {
         avatarImg.src = perfil.deckImagemUrl
         avatarImg.alt = `Deck mais usado: ${perfil.deckMaisUsado}`
+
+        // Adiciona evento de clique para abrir modal de imagem
+        avatarImg.onclick = () =>
+          abrirModalImagem(perfil.deckImagemUrl, perfil.deckMaisUsado)
       }
 
       // Mostra resultado
       loadingDiv.style.display = "none"
       resultadoDiv.style.display = "block"
-
-      console.log("Perfil carregado:", perfil)
     } catch (error) {
       console.error("Erro ao buscar perfil:", error)
       loadingDiv.style.display = "none"
       erroDiv.style.display = "block"
     }
   }
+
+  // Controle do modal de visualização de imagem
+  function abrirModalImagem(url, alt) {
+    const imageModal = document.getElementById("imageModal")
+    const imageModalImg = document.getElementById("imageModalImg")
+
+    if (imageModal && imageModalImg) {
+      imageModalImg.src = url
+      imageModalImg.alt = alt
+      imageModal.style.display = "flex"
+      document.body.style.overflow = "hidden"
+    }
+  }
+
+  // Fecha modal de imagem ao clicar no X
+  const imageClose = document.querySelector(".image-close")
+  if (imageClose) {
+    imageClose.addEventListener("click", () => {
+      const imageModal = document.getElementById("imageModal")
+      if (imageModal) {
+        imageModal.style.display = "none"
+        document.body.style.overflow = "auto"
+      }
+    })
+  }
+
+  // Fecha modal de imagem ao clicar fora
+  const imageModal = document.getElementById("imageModal")
+  if (imageModal) {
+    imageModal.addEventListener("click", (e) => {
+      if (e.target === imageModal) {
+        imageModal.style.display = "none"
+        document.body.style.overflow = "auto"
+      }
+    })
+  }
+
+  // Fecha modal de imagem com ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      const imageModal = document.getElementById("imageModal")
+      if (imageModal && imageModal.style.display === "flex") {
+        imageModal.style.display = "none"
+        document.body.style.overflow = "auto"
+      }
+    }
+  })
 })

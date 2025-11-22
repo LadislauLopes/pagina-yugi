@@ -127,19 +127,15 @@ async function buscarPerfilJogador(playerId) {
     // Deck mais usado
     let deckMaisUsado = "Nenhum"
     let deckImagemUrl = "images/png/enerd/unknown.png"
-    console.log("Deck usage:", deckUsage)
-    console.log("Decks disponíveis:", decks)
 
     if (Object.keys(deckUsage).length > 0) {
       const deckIdMaisUsado = Object.entries(deckUsage).sort(
         (a, b) => b[1] - a[1]
       )[0][0]
-      console.log("Deck ID mais usado:", deckIdMaisUsado)
 
       const deckObj = decks.find(
         (d) => normalizeId(d.Id_Decks) === deckIdMaisUsado
       )
-      console.log("Deck encontrado:", deckObj)
 
       if (deckObj) {
         deckMaisUsado = deckObj.Nome || deckMaisUsado

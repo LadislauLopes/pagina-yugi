@@ -9,7 +9,6 @@ function carregarCSV(url, tabelaId) {
   fetch(url)
     .then((res) => res.text())
     .then((csv) => {
-      console.log("CSV bruto carregado:", csv)
       const resultados = Papa.parse(csv, {
         header: true,
         skipEmptyLines: true,
@@ -30,8 +29,6 @@ function carregarCSV(url, tabelaId) {
 
       // Remove jogadores com 0 pontos
       const dadosFiltrados = dados.filter((jogador) => jogador.Pontuação > 0)
-
-      console.log("Dados convertidos e filtrados:", dadosFiltrados)
 
       // Ordena por Pontuação e Desempate
       dadosFiltrados.sort((a, b) => {

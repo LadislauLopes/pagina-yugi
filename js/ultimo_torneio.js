@@ -36,7 +36,9 @@ async function carregarUltimoTorneio() {
               .join(" ")
           : "Desconhecido",
         deck: deck ? deck.Nome : "Desconhecido",
-        urlDeck: deck && deck.url ? deck.url : "images/png/enerd/unknown.png", // fallback
+        urlDeck: deck && deck.url ? deck.url : "images/png/enerd/unknown.png", // fallback (imagem de fundo)
+        urlDeckModal:
+          p.Url_Deck || (deck && deck.url) || "images/png/enerd/unknown.png", // URL para modal
       }
     })
 
@@ -65,6 +67,13 @@ async function carregarUltimoTorneio() {
       card.style.backgroundImage = `url(${p.urlDeck})`
       card.style.backgroundSize = "cover"
       card.style.backgroundPosition = "center"
+      card.style.cursor = "pointer"
+      card.title = "Clique para ver a imagem completa"
+
+      // Adiciona evento de clique para abrir modal
+      card.onclick = () => {
+        abrirModalImagemTorneio(p.urlDeckModal, p.deck)
+      }
 
       // Atualiza o nome do jogador no <h1> ao lado de fora
       const h1Participante = card.nextElementSibling
@@ -72,10 +81,21 @@ async function carregarUltimoTorneio() {
         h1Participante.textContent = p.nome
       }
     })
-
-    console.log("Top 4 carregado:", participantes)
   } catch (err) {
     console.error("Erro ao carregar dados do torneio:", err)
+  }
+}
+
+// Função para abrir modal de imagem
+function abrirModalImagemTorneio(url, deckNome) {
+  const imageModal = document.getElementById("imageModal")
+  const imageModalImg = document.getElementById("imageModalImg")
+
+  if (imageModal && imageModalImg) {
+    imageModalImg.src = url
+    imageModalImg.alt = `Deck: ${deckNome}`
+    imageModal.style.display = "flex"
+    document.body.style.overflow = "hidden"
   }
 }
 

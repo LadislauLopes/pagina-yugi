@@ -54,7 +54,7 @@ async function carregarGraficoTopDecks() {
 
     Object.entries(deckCounts).forEach(([nome, info]) => {
       const percent = (info.count / totalCount) * 100
-      if (percent < 10) {
+      if (percent < 5) {
         outrosCount += info.count
       } else {
         slices.push({
